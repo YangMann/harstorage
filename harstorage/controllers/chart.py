@@ -11,7 +11,6 @@ from harstorage.lib.base import BaseController
 
 
 class ChartController(BaseController):
-
     """
     Export charts in SVG and PNG format
     """

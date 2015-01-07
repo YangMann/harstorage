@@ -11,7 +11,7 @@ setup(
     license='BSD, see LICENSE.txt for details',
     platforms=['Linux', 'Windows'],
     setup_requires=[],
-    install_requires=[],
+    install_requires=['pylons', ],
     packages=find_packages(),
     include_package_data=True,
     test_suite='nose.collector',

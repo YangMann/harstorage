@@ -2,7 +2,6 @@ import math
 
 
 class Aggregator():
-
     """
     Test results aggregation
 
@@ -151,7 +150,6 @@ class Aggregator():
 
 
 class Histogram():
-
     """
     Statistical histograms based on Sturges rule
 

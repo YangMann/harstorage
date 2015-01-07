@@ -3,7 +3,6 @@ from pylons.templating import render_mako as render
 
 
 class BaseController(WSGIController):
-
     """
     The base Controller API
 

@@ -4,7 +4,6 @@ from pylons import config, tmpl_context as c
 
 
 class MongoDB():
-
     """
     Interface for MongoDB database
     """
@@ -25,9 +24,13 @@ class MongoDB():
             replicate = config["app_conf"]["mongo_replicate"]
 
             if replicate == "true":
-                self.collection = pymongo.MongoReplicaSetClient(host=uri,port=int(config["app_conf"]["mongo_port"]),replicaSet=(config["app_conf"]["mongo_replset"]))[database][collection]
+                self.collection = pymongo.MongoReplicaSetClient(host=uri, port=int(config["app_conf"]["mongo_port"]),
+                                                                replicaSet=(config["app_conf"]["mongo_replset"]))[
+                    database][collection]
             else:
-                self.collection = pymongo.mongo_client.MongoClient(host=uri,port=int(config["app_conf"]["mongo_port"]))[database][collection]
+                self.collection = \
+                pymongo.mongo_client.MongoClient(host=uri, port=int(config["app_conf"]["mongo_port"]))[database][
+                    collection]
 
             # Indecies
             self.ensure_index()

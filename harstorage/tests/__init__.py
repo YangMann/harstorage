@@ -26,7 +26,6 @@ environ = {}
 
 
 class TestController(TestCase):
-
     def __init__(self, *args, **kwargs):
         wsgiapp = pylons.test.pylonsapp
         config = wsgiapp.config

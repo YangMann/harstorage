@@ -19,7 +19,6 @@ import harstorage.lib.helpers as h
 
 
 class ResultsController(BaseController):
-
     """
     Core controller of repository
     """
@@ -49,8 +48,7 @@ class ResultsController(BaseController):
 
         # Read aggregated data from database
         # Aggregation is based on unique labels, urls and latest timestamps
-        
-        
+
         '''
         Replaced the original grouping with an aggregate function.  This function
         actually returns all of the fields needed such that we also do not needed
@@ -58,12 +56,12 @@ class ResultsController(BaseController):
         the list
         '''
         latest_results = mdb_handler.collection.aggregate(
-            [{"$group":{"_id": {"label":"$label", "url":"$url"},
-            "timestamp":{"$last":"$timestamp"},
-            "total_size":{"$last":"$total_size"},
-            "requests":{"$last":"$requests"},
-            "full_load_time": {"$last":"$full_load_time"}}},
-            {"$sort":{"timestamp" : -1}}])
+            [{"$group": {"_id": {"label": "$label", "url": "$url"},
+                         "timestamp": {"$last": "$timestamp"},
+                         "total_size": {"$last": "$total_size"},
+                         "requests": {"$last": "$requests"},
+                         "full_load_time": {"$last": "$full_load_time"}}},
+             {"$sort": {"timestamp": -1}}])
 
         '''
         Get the number of records
@@ -98,8 +96,7 @@ class ResultsController(BaseController):
             c.metrics_table[3].append(result["total_size"])
             c.metrics_table[4].append(result["requests"])
             c.metrics_table[5].append(round(result["full_load_time"] / 1000.0, 1))
-        
-        
+
         return render("/home/core.html")
 
     @restrict("GET")
@@ -411,7 +408,7 @@ class ResultsController(BaseController):
             return False, har.parsing_status
 
     def _get_pagespeed_scores(self, har):
-        #Store HAR for Page Speed binary
+        # Store HAR for Page Speed binary
         hashname = hashlib.md5().hexdigest()
         temp_store = config["app_conf"]["temp_store"]
         filename = os.path.join(temp_store, hashname)
@@ -470,6 +467,6 @@ class ResultsController(BaseController):
 
         # Add content type header
         response.content_type = mimetypes.guess_type(filename)[0] or \
-            "text/plain"
+                                "text/plain"
 
         return data

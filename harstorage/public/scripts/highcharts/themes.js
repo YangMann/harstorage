@@ -109,7 +109,7 @@ Highcharts.darkGreen = {
                 color: "#FFFFFF",
                 distance: 25,
                 connectorColor: "#FFFFFF",
-                formatter: function() {
+                formatter: function () {
                     return this.point.name;
                 }
             }
@@ -234,7 +234,7 @@ Highcharts.light = {
                 distance: 25,
                 connectorColor: "#498A2D",
                 color: "#498A2D",
-                formatter: function() {
+                formatter: function () {
                     return this.point.name;
                 }
             }
@@ -368,7 +368,7 @@ Highcharts.lightGreen = {
                 distance: 25,
                 connectorColor: "#498A2D",
                 color: "#498A2D",
-                formatter: function() {
+                formatter: function () {
                     return this.point.name;
                 }
             }
@@ -411,7 +411,7 @@ Highcharts.lightGreen = {
 /*
  * Theme setup
  */
-HARSTORAGE.setTheme = function() {
+HARSTORAGE.setTheme = function () {
     "use strict";
 
     // Read preference from Cookie
@@ -419,14 +419,14 @@ HARSTORAGE.setTheme = function() {
 
     if (theme) {
         switch (theme) {
-        case "light":
-            Highcharts.setOptions(Highcharts.light);
-            break;
-        case "light-green":
-            Highcharts.setOptions(Highcharts.lightGreen);
-            break;
-        default:
-            Highcharts.setOptions(Highcharts.darkGreen);
+            case "light":
+                Highcharts.setOptions(Highcharts.light);
+                break;
+            case "light-green":
+                Highcharts.setOptions(Highcharts.lightGreen);
+                break;
+            default:
+                Highcharts.setOptions(Highcharts.darkGreen);
         }
     } else {
         Highcharts.setOptions(Highcharts.darkGreen);

@@ -8,7 +8,6 @@ from harstorage.lib.Math import Histogram, Aggregator
 
 
 class SuperposedController(BaseController):
-
     """
     Interface for aggregation and comparison of test results
 

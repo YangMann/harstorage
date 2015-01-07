@@ -8,9 +8,7 @@ from harstorage.lib.HAR import HAR
 import harstorage.lib.helpers as h
 
 
-
 class MigrationController(BaseController):
-
     def __before__(self):
         """Define version of static content"""
 

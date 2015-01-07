@@ -6,7 +6,6 @@ from harstorage.lib.base import BaseController
 
 
 class CombineController(BaseController):
-
     """
     Combine multiple static text resources (CSS, JavaScript)
     into single file

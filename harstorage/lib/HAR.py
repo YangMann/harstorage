@@ -6,7 +6,6 @@ DATE_FORMAT = "%a, %d %b %Y %H:%M:%S GMT"
 
 
 class Bytes(float):
-
     """
     Extended integer
     """
@@ -25,7 +24,6 @@ class Bytes(float):
 
 
 class Headers():
-
     """
     Manipulation with HTTP headers
     """
@@ -42,7 +40,6 @@ class Headers():
 
 
 class Fixer():
-
     """
     Fix issues with broken HAR format
     """
@@ -125,7 +122,6 @@ class Fixer():
 
 
 class HAR():
-
     """
     HAR Parser
     """
@@ -264,7 +260,7 @@ class HAR():
                 mime_type = self.get_normalized_value(mime_type)
                 size = Bytes(entry["response"]["content"]["size"])
                 resources[mime_type] = resources.get(mime_type, 0) + \
-                    size.to_kilobytes()
+                                       size.to_kilobytes()
         return resources
 
     def req_ratio(self):
@@ -348,7 +344,7 @@ class HAR():
 
         time_request_started = seconds + float("0." + milliseconds)
         time_request_completed = time_request_started + \
-            self.entry["time"] / 1000.0
+                                 self.entry["time"] / 1000.0
 
         if time_request_completed > self.max_timestamp:
             self.max_timestamp = time_request_completed
@@ -362,10 +358,10 @@ class HAR():
     def get_time_to_first_byte(self):
         if self.is_first:
             return self.get_blocking_time() + \
-                self.get_dns_time() + \
-                self.get_connecting_time() + \
-                self.get_send_time() + \
-                self.get_server_time()
+                   self.get_dns_time() + \
+                   self.get_connecting_time() + \
+                   self.get_send_time() + \
+                   self.get_server_time()
         else:
             return self.time_to_first_byte
 

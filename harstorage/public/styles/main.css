@@ -2,36 +2,43 @@
 body {
     color: #498a2d;
 }
+
 body a {
     color: #498a2d;
     text-decoration: none;
 }
+
 body a:hover {
     text-decoration: underline;
 }
+
 /* Document Header and Footer*/
 .header .left a:hover {
     text-decoration: none;
 }
+
 .header .right {
     text-align: right;
     font-family: "Gill Sans", Verdana;
     font-size: 77%;
     margin: 6px 0 0 0;
 }
+
 .header .left {
     float: left;
     text-align: left;
     font-family: times, "Times New Roman", times-roman, georgia, serif;
     font-weight: bold;
-    font-size: 174%;    
+    font-size: 174%;
 }
-.header .hr,.footer .hr {
+
+.header .hr, .footer .hr {
     height: 1px;
     width: 100%;
     background-color: #498a2d;
     margin: 10px 0 10px 0;
 }
+
 /* Preferences menu */
 .header #preferences {
     position: absolute;
@@ -49,6 +56,7 @@ body a:hover {
     z-index: 100;
     display: none;
 }
+
 .header #close {
     position: absolute;
     top: 7px;
@@ -59,24 +67,29 @@ body a:hover {
     font-size: 85%;
     text-decoration: none;
 }
+
 .header #close a {
     text-decoration: none;
     font-family: "Gill Sans", Verdana;
     font-size: 85%;
 }
+
 .header .radio {
     vertical-align: -3px;
     margin: 0 0 10px 0;
 }
+
 .header #preferences strong {
     font-family: "Gill Sans", Verdana;
     font-weight: bold;
     font-size: 77%;
 }
+
 .header #preferences .theme-name {
     font-family: "Gill Sans", Verdana;
     font-size: 77%;
 }
+
 .header #preferences button {
     width: 100px;
     padding: 4px 0;
@@ -91,6 +104,7 @@ body a:hover {
     border-radius: 3px;
     cursor: pointer;
 }
+
 /* Manual uploader */
 .uploader fieldset {
     margin: 20px 0 20px 0;
@@ -100,6 +114,7 @@ body a:hover {
     border-radius: 10px;
     width: 480px;
 }
+
 .uploader legend {
     color: #fff;
     font-family: times, "Times New Roman", times-roman, georgia, serif;
@@ -111,6 +126,7 @@ body a:hover {
     border-radius: 3px;
     padding: 2px 20px;
 }
+
 .uploader .file {
     width: 300px;
     height: 24px;
@@ -123,6 +139,7 @@ body a:hover {
     border-radius: 3px;
     cursor: pointer;
 }
+
 .uploader .button {
     width: 100px;
     padding: 4px 0;
@@ -137,11 +154,13 @@ body a:hover {
     border-radius: 3px;
     cursor: pointer;
 }
+
 /* Summary Table on Home Page */
 .summary {
     width: 960px;
     visibility: hidden;
 }
+
 .summary .title {
     font-family: times, "Times New Roman", times-roman, georgia, serif;
     font-weight: bold;
@@ -149,9 +168,11 @@ body a:hover {
     margin: 0 0 12px 0;
     text-align: left;
 }
+
 .summary table {
     table-layout: fixed;
 }
+
 .summary button {
     width: 220px;
     padding: 4px 0;
@@ -166,17 +187,21 @@ body a:hover {
     border-radius: 3px;
     cursor: pointer;
 }
+
 /* Superposed Test */
 .sp-display {
     width: 960px;
 }
-.sp-display #chart{
+
+.sp-display #chart {
     width: 960px;
     height: 400px;
 }
+
 .sp-display #summary-table {
     visibility: hidden;
 }
+
 .sp-display .title {
     font-family: times, "Times New Roman", times-roman, georgia, serif;
     font-weight: bold;
@@ -185,26 +210,32 @@ body a:hover {
     float: left;
     text-align: left;
 }
+
 .sp-display #metrics, .sp-display #timings {
     visibility: hidden;
 }
+
 .sp-display #metrics {
     width: 155px;
 }
+
 .sp-display #timings {
     width: 200px;
 }
+
 .sp-display .selector {
     text-align: right;
     margin: 12px 0 18px 0;
 }
+
 .sp-create fieldset {
-    width: 960px;    
+    width: 960px;
     border: 1px solid #498a2d;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
+
 .sp-create legend {
     color: #fff;
     font-family: times, "Times New Roman", times-roman, georgia, serif;
@@ -216,13 +247,16 @@ body a:hover {
     border-radius: 3px;
     padding: 2px 20px;
 }
+
 .sp-create {
     position: relative;
 }
+
 .sp-create .form {
     position: relative;
     z-index: 1;
 }
+
 .sp-create .spinner {
     position: relative;
     z-index: 2;
@@ -231,6 +265,7 @@ body a:hover {
     left: 480px;
     display: none;
 }
+
 .sp-create .howto {
     width: 980px;
     margin: 20px 0 10px 0;
@@ -238,44 +273,55 @@ body a:hover {
     font-size: 100%;
     text-align: right;
 }
+
 .sp-create .howto a {
     text-decoration: none;
 }
+
 .sp-create .howto a:hover {
     text-decoration: underline;
 }
+
 .sp-create .slct-label {
     float: left;
     width: 200px;
 }
+
 .sp-create .slct-start {
     float: left;
     width: 160px;
 }
+
 .sp-create .slct-end {
     width: 160px;
 }
+
 .sp-create .container {
     text-align: left;
     margin: 20px 0 0 0;
 }
-.sp-create .title,.sp-create .text {
+
+.sp-create .title, .sp-create .text {
     float: left;
     font-family: times, "Times New Roman", times-roman, georgia, serif;
     font-size: 93%;
 }
+
 .sp-create .text {
     margin: 4px 10px 0 20px;
 }
+
 .sp-create .title {
     width: 60px;
     font-weight: bold;
     margin: 4px 0 0 10px;
 }
+
 .sp-create .image {
     vertical-align: top;
     margin: 0 0 0 20px;
 }
+
 .sp-create .submit {
     width: 220px;
     padding: 4px 0;
@@ -290,22 +336,27 @@ body a:hover {
     border-radius: 3px;
     cursor: pointer;
 }
+
 .sp-create .checkbox {
     margin: 25px 5px 0 20px;
-    vertical-align: -2px;    
+    vertical-align: -2px;
 }
+
 .sp-create .checkbox-text {
     font-family: times, "Times New Roman", times-roman, georgia, serif;
-    font-size: 93%;    
+    font-size: 93%;
 }
+
 /* Results */
 .results {
     width: 960px;
 }
-.results #timeline{
+
+.results #timeline {
     width: 960px;
     height: 450px;
 }
+
 .results .title {
     font-family: times, "Times New Roman", times-roman, georgia, serif;
     font-weight: bold;
@@ -314,14 +365,17 @@ body a:hover {
     float: left;
     text-align: left;
 }
+
 .results select {
     width: 200px;
     display: none;
 }
+
 .results .selector {
     text-align: right;
     margin: 12px 0 0 0;
 }
+
 .results #gauge {
     margin: 10px 0 0 0;
     float: left;
@@ -329,22 +383,27 @@ body a:hover {
     width: 200px;
     height: 200px;
 }
-.results .container-max,.results .container-min,.results .container-umin {
+
+.results .container-max, .results .container-min, .results .container-umin {
     height: 210px;
     float: left;
     margin: 10px 0 0 0;
     font-family: times, "Times New Roman", times-roman, georgia, serif;
     font-size: 93%;
 }
+
 .results .container-max {
     width: 260px;
 }
+
 .results .container-min {
     width: 220px;
 }
+
 .results .container-umin {
     width: 200px;
 }
+
 .results .title-max, .results .title-min, .results .title-umax {
     text-align: right;
     font-family: times, "Times New Roman", times-roman, georgia, serif;
@@ -352,60 +411,74 @@ body a:hover {
     margin: 8px 0 8px 0;
     float: left;
 }
+
 .results .title-max {
     width: 180px;
 }
+
 .results .title-umax {
     width: 160px;
 }
+
 .results .title-min {
     width: 140px;
 }
+
 .results .value {
     text-align: left;
     margin: 8px 0 8px 10px;
     width: 70px;
     float: left;
 }
+
 .results .value-min {
     text-align: left;
     margin: 8px 0 8px 10px;
     width: 50px;
     float: left;
 }
+
 .results .image {
     margin: 35px 0 0 170px;
 }
+
 .results #by-size, .results #by-req {
-    width:450px;
-    height:300px;
-    float:left;
+    width: 450px;
+    height: 300px;
+    float: left;
 }
+
 .results #by-size {
     margin: 10px 0 10px 10px;
 }
+
 .results #by-req {
     margin: 10px 0 10px 30px;
 }
+
 .results #domains-by-size, .results #domains-by-req {
-    width:930px;
-    height:300px;
+    width: 930px;
+    height: 300px;
     margin: 10px 0;
 }
+
 .results #pagespeed {
     margin: 10px 0;
 }
+
 .results #harviewer {
     margin: 10px 0;
 }
+
 .results #manager {
     text-align: left;
     padding: 20px 0 20px 10px;
 }
+
 .results button {
     width: 200px;
     padding: 4px 0;
-    margin: 0 10px;    
+    margin: 0 10px;
     color: #000;
     font-family: arial;
     font-size: 77%;
@@ -417,9 +490,11 @@ body a:hover {
     cursor: pointer;
     display: none;
 }
+
 .results .newtab {
     text-align: center;
 }
+
 .results .newtab button {
     width: 200px;
     padding: 4px 0;
@@ -434,6 +509,7 @@ body a:hover {
     border-radius: 3px;
     cursor: pointer;
 }
+
 .results .spinner {
     position: relative;
     width: 26px;

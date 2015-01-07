@@ -9,9 +9,9 @@ ${header.html()}
 <center>
     <div class="sp-display">
         % if c.chart == "true":
-            ${modules.chart()}
+        ${modules.chart()}
         % endif
-    
+
         <p class="title">Aggregated Statistics</p>
 
         <div class="selector">
@@ -20,12 +20,13 @@ ${header.html()}
                 <option value="Median">Median</option>
                 <option value="90th Percentile">90th Percentile</option>
                 <option value="Minimum">Minimum</option>
-                <option value="Maximum">Maximum</option>s
+                <option value="Maximum">Maximum</option>
+                s
             </select>
         </div>
 
         % if c.table == "true":
-            ${modules.table()}
+        ${modules.table()}
         % endif
     </div>
 </center>

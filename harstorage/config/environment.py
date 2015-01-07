@@ -30,6 +30,7 @@ def load_environment(global_conf, app_conf):
 
     # Setup cache object as early as possible
     import pylons
+
     pylons.cache._push_object(config["pylons.app_globals"].cache)
 
     # Create the Mako TemplateLookup, with the default auto-escaping

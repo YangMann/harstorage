@@ -6,21 +6,21 @@ var HARSTORAGE = HARSTORAGE || {};
 /*
  * Cookies
  */
-HARSTORAGE.create_cookie = function(name, value) {
+HARSTORAGE.create_cookie = function (name, value) {
     "use strict";
 
     document.cookie = name + "=" + value + ";" +
-                      "expires=Wed, 1 Jan 2014 00:00:00 UTC;" +
-                      "path=/";
+    "expires=Wed, 1 Jan 2014 00:00:00 UTC;" +
+    "path=/";
 };
 
-HARSTORAGE.read_cookie = function(name) {
+HARSTORAGE.read_cookie = function (name) {
     "use strict";
 
     var nameEQ = name + "=";
     var cookies = document.cookie.split(";");
 
-    for (var i=0; i < cookies.length; i++) {
+    for (var i = 0; i < cookies.length; i++) {
         var cookie = cookies[i];
         while (cookie.charAt(0) === " ") {
             cookie = cookie.substring(1, cookie.length);
@@ -36,7 +36,7 @@ HARSTORAGE.read_cookie = function(name) {
 /*
  * View Preferences Menu
  */
-HARSTORAGE.view_preferences = function() {
+HARSTORAGE.view_preferences = function () {
     "use strict";
 
     // Read preference from Cookie
@@ -48,7 +48,7 @@ HARSTORAGE.view_preferences = function() {
 
         var len = theme_list.length;
 
-        for (var i=0; i < len; i++ ) {
+        for (var i = 0; i < len; i++) {
             if (theme_list[i].value === theme) {
                 theme_list[i].checked = true;
                 break;
@@ -58,7 +58,7 @@ HARSTORAGE.view_preferences = function() {
 
     // Display preference menu
     var menu = document.getElementById("preferences");
-    
+
     if (menu.style.display === "none" || menu.style.display === "") {
         menu.style.display = "block";
     } else {
@@ -69,7 +69,7 @@ HARSTORAGE.view_preferences = function() {
 /*
  * Update Preferences
  */
-HARSTORAGE.update_preferences = function() {
+HARSTORAGE.update_preferences = function () {
     "use strict";
 
     // Look up for selected theme
@@ -77,7 +77,7 @@ HARSTORAGE.update_preferences = function() {
 
     var len = theme_list.length;
 
-    for (var i=0; i < len; i++ ) {
+    for (var i = 0; i < len; i++) {
         if (theme_list[i].checked === true) {
             HARSTORAGE.create_cookie("chartTheme", theme_list[i].value);
             break;
@@ -85,13 +85,13 @@ HARSTORAGE.update_preferences = function() {
     }
 
     // Refresh current window
-    window.location.reload();    
+    window.location.reload();
 };
 
 /*
  * Chart colors from theme
  */
-HARSTORAGE.Colors = function() {
+HARSTORAGE.Colors = function () {
     "use strict";
 
     // Colors for Y Axis labels

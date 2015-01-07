@@ -1,45 +1,46 @@
 /*==================================================
-    License (http://www.opensource.org/licenses/mit-license.php)
+ License (http://www.opensource.org/licenses/mit-license.php)
 
-    Copyright (c) 2006 Patrick Fitzgerald
+ Copyright (c) 2006 Patrick Fitzgerald
 
-    Permission is hereby granted, free of charge, to any person
-    obtaining a copy of this software and associated documentation files
-    (the "Software"), to deal in the Software without restriction,
-    including without limitation the rights to use, copy, modify, merge,
-    publish, distribute, sublicense, and/or sell copies of the Software,
-    and to permit persons to whom the Software is furnished to do so,
-    subject to the following conditions:
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation files
+ (the "Software"), to deal in the Software without restriction,
+ including without limitation the rights to use, copy, modify, merge,
+ publish, distribute, sublicense, and/or sell copies of the Software,
+ and to permit persons to whom the Software is furnished to do so,
+ subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be
-    included in all copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
-    BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
-    ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
-    ==================================================*/
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ ==================================================*/
 
 function TabberObj(argsObj) {
     "use strict";
 
-    var arg; /* name of an argument to override */
+    var arg;
+    /* name of an argument to override */
 
     /* Element for the main tabber div. If you supply this in argsObj,
-       then the init() method will be called.
-    */
+     then the init() method will be called.
+     */
     this.div = null;
 
     /* Class of the main tabber div */
     this.classMain = "tabber";
 
     /* Rename classMain to classMainLive after tabifying
-       (so a different style can be applied)
-    */
+     (so a different style can be applied)
+     */
     this.classMainLive = "tabberlive";
 
     /* Class of each DIV that contains a tab */
@@ -52,52 +53,52 @@ function TabberObj(argsObj) {
     this.classNav = "tabbernav";
 
     /* When a tab is to be hidden, instead of setting display='none', we
-       set the class of the div to classTabHide. In your screen
-       stylesheet you should set classTabHide to display:none.  In your
-       print stylesheet you should set display:block to ensure that all
-       the information is printed.
-    */
+     set the class of the div to classTabHide. In your screen
+     stylesheet you should set classTabHide to display:none.  In your
+     print stylesheet you should set display:block to ensure that all
+     the information is printed.
+     */
     this.classTabHide = "tabbertabhide";
 
     /* Class to set the navigation LI when the tab is active, so you can
-       use a different style on the active tab.
-    */
+     use a different style on the active tab.
+     */
     this.classNavActive = "tabberactive";
 
     /* Elements that might contain the title for the tab, only used if a
-       title is not specified in the TITLE attribute of DIV classTab.
-    */
-    this.titleElements = ['h2','h3','h4','h5','h6'];
+     title is not specified in the TITLE attribute of DIV classTab.
+     */
+    this.titleElements = ['h2', 'h3', 'h4', 'h5', 'h6'];
 
     /* Should we strip out the HTML from the innerHTML of the title elements?
-       This should usually be true.
-    */
+     This should usually be true.
+     */
     this.titleElementsStripHTML = true;
 
     /* If the user specified the tab names using a TITLE attribute on
-       the DIV, then the browser will display a tooltip whenever the
-       mouse is over the DIV. To prevent this tooltip, we can remove the
-       TITLE attribute after getting the tab name.
-    */
+     the DIV, then the browser will display a tooltip whenever the
+     mouse is over the DIV. To prevent this tooltip, we can remove the
+     TITLE attribute after getting the tab name.
+     */
     this.removeTitle = true;
 
     /* If you want to add an id to each link set this to true */
     this.addLinkId = false;
 
     /* If addIds==true, then you can set a format for the ids.
-       <tabberid> will be replaced with the id of the main tabber div.
-       <tabnumberzero> will be replaced with the tab number
-           (tab numbers starting at zero)
-       <tabnumberone> will be replaced with the tab number
-           (tab numbers starting at one)
-       <tabtitle> will be replaced by the tab title
-           (with all non-alphanumeric characters removed)
+     <tabberid> will be replaced with the id of the main tabber div.
+     <tabnumberzero> will be replaced with the tab number
+     (tab numbers starting at zero)
+     <tabnumberone> will be replaced with the tab number
+     (tab numbers starting at one)
+     <tabtitle> will be replaced by the tab title
+     (with all non-alphanumeric characters removed)
      */
     this.linkIdFormat = '<tabberid>nav<tabnumberone>';
 
     /* You can override the defaults listed above by passing in an object:
-         var mytab = new tabber({property:value,property:value});
-    */
+     var mytab = new tabber({property:value,property:value});
+     */
     for (arg in argsObj) {
         if (argsObj.hasOwnProperty(arg)) {
             this[arg] = argsObj[arg];
@@ -105,9 +106,9 @@ function TabberObj(argsObj) {
     }
 
     /* Create regular expressions for the class names; Note: if you
-       change the class names after a new object is created you must
-       also change these regular expressions.
-    */
+     change the class names after a new object is created you must
+     also change these regular expressions.
+     */
     this.REclassMain = new RegExp('\\b' + this.classMain + '\\b', 'gi');
     this.REclassMainLive = new RegExp('\\b' + this.classMainLive + '\\b', 'gi');
     this.REclassTab = new RegExp('\\b' + this.classTab + '\\b', 'gi');
@@ -122,36 +123,37 @@ function TabberObj(argsObj) {
         this.init(this.div);
 
         /* We don't need the main div anymore, and to prevent a memory leak
-           in IE, we must remove the circular reference between the div
-           and the tabber object. */
+         in IE, we must remove the circular reference between the div
+         and the tabber object. */
         this.div = null;
     }
 }
 
 /*--------------------------------------------------
-    Methods for TabberObj
-  --------------------------------------------------*/
+ Methods for TabberObj
+ --------------------------------------------------*/
 
-TabberObj.prototype.init = function(e) {
+TabberObj.prototype.init = function (e) {
     "use strict";
 
     /* Set up the tabber interface.
 
-       e = element (the main containing div)
+     e = element (the main containing div)
 
-       Example:
-       init(document.getElementById('mytabberdiv'))
-    */
+     Example:
+     init(document.getElementById('mytabberdiv'))
+     */
 
     var childNodes, /* child nodes of the tabber div */
         i, i2, /* loop indices */
         t, /* object to store info about a single tab */
-        defaultTab=0, /* which tab to select by default */
+        defaultTab = 0, /* which tab to select by default */
         DOM_ul, /* tabbernav list */
         DOM_li, /* tabbernav list item */
         DOM_a, /* tabbernav link */
         aId, /* A unique id for DOM_a */
-        headingElement; /* searching for text to use in the tab */
+        headingElement;
+    /* searching for text to use in the tab */
 
     /* Verify that the browser supports DOM scripting */
     if (!document.getElementsByTagName) {
@@ -168,11 +170,11 @@ TabberObj.prototype.init = function(e) {
 
     /* Loop through an array of all the child nodes within our tabber element. */
     childNodes = e.childNodes;
-    for (i=0; i < childNodes.length; i++) {
-        
+    for (i = 0; i < childNodes.length; i++) {
+
         /* Find the nodes where class="tabbertab" */
-        if(childNodes[i].className &&
-             childNodes[i].className.match(this.REclassTab)) {
+        if (childNodes[i].className &&
+            childNodes[i].className.match(this.REclassTab)) {
 
             /* Create a new object to save info about this tab */
             t = {};
@@ -184,10 +186,10 @@ TabberObj.prototype.init = function(e) {
             this.tabs[this.tabs.length] = t;
 
             /* If the class name contains classTabDefault,
-               then select this tab by default.
-            */
+             then select this tab by default.
+             */
             if (childNodes[i].className.match(this.REclassTabDefault)) {
-                defaultTab = this.tabs.length-1;
+                defaultTab = this.tabs.length - 1;
             }
         }
     }
@@ -197,34 +199,36 @@ TabberObj.prototype.init = function(e) {
     DOM_ul.className = this.classNav;
 
     /* Loop through each tab we found */
-    for (i=0; i < this.tabs.length; i++) {
+    for (i = 0; i < this.tabs.length; i++) {
 
         t = this.tabs[i];
 
         /* Get the label to use for this tab:
-             From the title attribute on the DIV,
-             Or from one of the this.titleElements[] elements,
-             Or use an automatically generated number.
+         From the title attribute on the DIV,
+         Or from one of the this.titleElements[] elements,
+         Or use an automatically generated number.
          */
         t.headingText = t.div.title;
 
         /* Remove the title attribute to prevent a tooltip from appearing */
-        if (this.removeTitle) { t.div.title = ''; }
+        if (this.removeTitle) {
+            t.div.title = '';
+        }
 
         if (!t.headingText) {
 
             /* Title was not defined in the title of the DIV,
-               So try to get the title from an element within the DIV.
-               Go through the list of elements in this.titleElements
-               (typically heading elements ['h2','h3','h4'])
-            */
-            for (i2=0; i2<this.titleElements.length; i2++) {
+             So try to get the title from an element within the DIV.
+             Go through the list of elements in this.titleElements
+             (typically heading elements ['h2','h3','h4'])
+             */
+            for (i2 = 0; i2 < this.titleElements.length; i2++) {
                 headingElement = t.div.getElementsByTagName(this.titleElements[i2])[0];
                 if (headingElement) {
                     t.headingText = headingElement.innerHTML;
                     if (this.titleElementsStripHTML) {
-                        t.headingText.replace(/<br>/gi," ");
-                        t.headingText = t.headingText.replace(/<[^>]+>/g,"");
+                        t.headingText.replace(/<br>/gi, " ");
+                        t.headingText = t.headingText.replace(/<[^>]+>/g, "");
                     }
                     break;
                 }
@@ -233,8 +237,8 @@ TabberObj.prototype.init = function(e) {
 
         if (!t.headingText) {
             /* Title was not found (or is blank) so automatically generate a
-               number for the tab.
-            */
+             number for the tab.
+             */
             t.headingText = i + 1;
         }
 
@@ -242,7 +246,7 @@ TabberObj.prototype.init = function(e) {
         DOM_li = document.createElement("li");
 
         /* Save a reference to this list item so we can later change it to
-             the "active" class */
+         the "active" class */
         t.li = DOM_li;
 
         /* Create a link to activate the tab */
@@ -253,8 +257,8 @@ TabberObj.prototype.init = function(e) {
         DOM_a.onclick = this.navClick;
 
         /* Add some properties to the link so we can identify which tab
-             was clicked. Later the navClick method will need this.
-        */
+         was clicked. Later the navClick method will need this.
+         */
         DOM_a.tabber = this;
         DOM_a.tabberIndex = i;
 
@@ -265,7 +269,7 @@ TabberObj.prototype.init = function(e) {
             aId = this.linkIdFormat;
             aId = aId.replace(/<tabberid>/gi, this.id);
             aId = aId.replace(/<tabnumberzero>/gi, i);
-            aId = aId.replace(/<tabnumberone>/gi, i+1);
+            aId = aId.replace(/<tabnumberone>/gi, i + 1);
             aId = aId.replace(/<tabtitle>/gi, t.headingText.replace(/[^a-zA-Z0-9\-]/gi, ''));
 
             DOM_a.id = aId;
@@ -291,28 +295,29 @@ TabberObj.prototype.init = function(e) {
 };
 
 
-TabberObj.prototype.navClick = function(event) {
+TabberObj.prototype.navClick = function (event) {
     "use strict";
 
     /* This method should only be called by the onClick event of an <A>
-       element, in which case we will determine which tab was clicked by
-       examining a property that we previously attached to the <A>
-       element.
+     element, in which case we will determine which tab was clicked by
+     examining a property that we previously attached to the <A>
+     element.
 
-       Since this was triggered from an onClick event, the variable
-       "this" refers to the <A> element that triggered the onClick
-       event (and not to the TabberObj).
+     Since this was triggered from an onClick event, the variable
+     "this" refers to the <A> element that triggered the onClick
+     event (and not to the TabberObj).
 
-       When TabberObj was initialized, we added some extra properties
-       to the <A> element, for the purpose of retrieving them now. Get
-       the TabberObj object, plus the tab number that was clicked.
-    */
+     When TabberObj was initialized, we added some extra properties
+     to the <A> element, for the purpose of retrieving them now. Get
+     the TabberObj object, plus the tab number that was clicked.
+     */
 
     var rVal, /* Return value from the user onclick function */
         a, /* element that triggered the onclick event */
         self, /* the tabber object */
         tabberIndex, /* index of the tab that triggered the event */
-        onClickArgs; /* args to send the onclick function */
+        onClickArgs;
+    /* args to send the onclick function */
 
     a = this;
 
@@ -324,15 +329,15 @@ TabberObj.prototype.navClick = function(event) {
     tabberIndex = a.tabberIndex;
 
     /* Remove focus from the link because it looks ugly.
-       I don't know if this is a good idea...
-    */
+     I don't know if this is a good idea...
+     */
     a.blur();
 
     /* If the user specified an onClick function, call it now.
-       If the function returns false then do not continue.
-    */
+     If the function returns false then do not continue.
+     */
     if (typeof self.onClick === 'function') {
-        onClickArgs = {'tabber':self, 'index':tabberIndex, 'event':event};
+        onClickArgs = {'tabber': self, 'index': tabberIndex, 'event': event};
 
         /* IE uses a different way to access the event object */
         if (!event) {
@@ -340,7 +345,9 @@ TabberObj.prototype.navClick = function(event) {
         }
 
         rVal = self.onClick(onClickArgs);
-        if (rVal === false) { return false; }
+        if (rVal === false) {
+            return false;
+        }
     }
 
     self.tabShow(tabberIndex);
@@ -349,10 +356,11 @@ TabberObj.prototype.navClick = function(event) {
 };
 
 
-TabberObj.prototype.tabHideAll = function() {
+TabberObj.prototype.tabHideAll = function () {
     "use strict";
 
-    var i; /* counter */
+    var i;
+    /* counter */
 
     /* Hide all tabs and make all navigation links inactive */
     for (i = 0; i < this.tabs.length; i++) {
@@ -361,7 +369,7 @@ TabberObj.prototype.tabHideAll = function() {
 };
 
 
-TabberObj.prototype.tabHide = function(tabberIndex) {
+TabberObj.prototype.tabHide = function (tabberIndex) {
     "use strict";
 
     var div;
@@ -383,7 +391,7 @@ TabberObj.prototype.tabHide = function(tabberIndex) {
 };
 
 
-TabberObj.prototype.tabShow = function(tabberIndex) {
+TabberObj.prototype.tabShow = function (tabberIndex) {
     "use strict";
 
     /* Show the tabberIndex tab and hide all the other tabs */
@@ -408,18 +416,18 @@ TabberObj.prototype.tabShow = function(tabberIndex) {
 
     /* If the user specified an onTabDisplay function, call it now. */
     if (typeof this.onTabDisplay === 'function') {
-        this.onTabDisplay({'tabber':this, 'index':tabberIndex});
+        this.onTabDisplay({'tabber': this, 'index': tabberIndex});
     }
 
     return this;
 };
 
-TabberObj.prototype.navSetActive = function(tabberIndex) {
+TabberObj.prototype.navSetActive = function (tabberIndex) {
     "use strict";
 
     /* Note: this method does *not* enforce the rule
-       that only one nav item can be active at a time.
-    */
+     that only one nav item can be active at a time.
+     */
 
     /* Set classNavActive for the navigation list item */
     this.tabs[tabberIndex].li.className = this.classNavActive;
@@ -428,12 +436,12 @@ TabberObj.prototype.navSetActive = function(tabberIndex) {
 };
 
 
-TabberObj.prototype.navClearActive = function(tabberIndex) {
+TabberObj.prototype.navClearActive = function (tabberIndex) {
     "use strict";
 
     /* Note: this method does *not* enforce the rule
-       that one nav should always be active.
-    */
+     that one nav should always be active.
+     */
 
     /* Remove classNavActive from the navigation list item */
     this.tabs[tabberIndex].li.className = '';
@@ -445,11 +453,11 @@ TabberObj.prototype.navClearActive = function(tabberIndex) {
     "use strict";
 
     /* This function finds all DIV elements in the document where
-       class=tabber.classMain, then converts them to use the tabber
-       interface.
+     class=tabber.classMain, then converts them to use the tabber
+     interface.
 
-       tabberArgs = an object to send to "new tabber()"
-    */
+     tabberArgs = an object to send to "new tabber()"
+     */
     var tempObj, /* Temporary tabber object */
         divs, /* Array of all divs on the page */
         i, /* Loop index */
@@ -462,11 +470,11 @@ TabberObj.prototype.navClearActive = function(tabberIndex) {
 
     /* First get an array of all DIV elements and loop through them */
     divs = document.getElementsByTagName("div");
-    for (i=0; i < divs.length; i++) {
+    for (i = 0; i < divs.length; i++) {
 
         /* Is this DIV the correct class? */
         if (divs[i].className &&
-	divs[i].className.match(tempObj.REclassMain)) {
+            divs[i].className.match(tempObj.REclassMain)) {
 
             /* Now tabify the DIV */
             tabberArgs.div = divs[i];

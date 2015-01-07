@@ -36,3 +36,8 @@ nosetests.xml
 
 # PyCharm
 .idea
+*.iml
+
+# Data
+data
+*.log
