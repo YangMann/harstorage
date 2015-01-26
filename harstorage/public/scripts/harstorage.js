@@ -37,7 +37,7 @@ var HARSTORAGE = HARSTORAGE || {};
  * Base url to be used when generating urls
  */
 var base_url = $('#base-url').text();
-HARSTORAGE.base_url = base_url
+HARSTORAGE.base_url = base_url;
 
 
 /*
@@ -710,7 +710,8 @@ HARSTORAGE.RunInfo.prototype.get = function (opt_ts) {
 
         // HAR Viewer
         var iframe = document.createElement("iframe");
-        var url = HARSTORAGE.base_url + "/results/harviewer?inputUrl=" + HARSTORAGE.base_url + "/results/download%3Fid%3D";
+        // http://127.0.0.1:5000/results/harviewer?inputUrl=http://127.0.0.1:5000/results/download%3Fid%3D54acd9917fa8022ce4dc851f&expand=true
+        var url = HARSTORAGE.base_url + "results/harviewer?inputUrl=" + HARSTORAGE.base_url + "results/download%3Fid%3D";
         url += that.json.har;
         url += "&expand=true";
 
